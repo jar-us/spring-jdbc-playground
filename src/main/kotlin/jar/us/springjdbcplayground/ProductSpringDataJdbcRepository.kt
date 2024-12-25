@@ -13,11 +13,11 @@ data class ProductEntity(@Id val id: Long?, val name: String, val price: Double)
 @Repository
 interface ProductSpringDataJdbcRepository : CrudRepository<Product, Long> {
 
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM Product")
     fun findAllAsStream(): Stream<ProductEntity>
 
     // Define a query that maps to a DTO projection
-    @Query("SELECT p.name, p.price FROM product p")
+    @Query("SELECT p.name, p.price FROM Product p")
     fun findNameAndPrice(): List<ProductNameAndPrice>
 
 }
