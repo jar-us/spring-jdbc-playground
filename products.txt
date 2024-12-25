@@ -1,0 +1,8 @@
+ID: 1, Name: Laptop Pro X, Price: 1299.99
+ID: 2, Name: Wireless Mouse, Price: 29.99
+ID: 3, Name: Office Chair, Price: 199.0
+ID: 4, Name: Wooden Desk, Price: 299.5
+ID: 5, Name: Java Programming Book, Price: 49.99
+ID: 6, Name: Python Cookbook, Price: 39.99
+ID: 7, Name: Running Shoes, Price: 89.95
+ID: 8, Name: Cotton T-Shirt, Price: 19.99
