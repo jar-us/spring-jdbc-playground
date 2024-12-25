@@ -64,4 +64,9 @@ class ProductRepository(
         val sql = "SELECT id, name, price FROM product LIMIT ? OFFSET ?"
         return jdbcTemplate.queryForList(sql, pageSize, offset)
     }
+
+    fun getProductsByNameAndPrice(): List<ProductNameAndPrice> {
+        return productSpringDataJdbcRepository.findNameAndPrice()
+    }
+
 }
