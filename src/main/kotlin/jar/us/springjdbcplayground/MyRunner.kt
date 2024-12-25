@@ -28,8 +28,16 @@ class MyRunner(private val productRepository: ProductRepository) : CommandLineRu
 //        println("Page 2: $page2")
 //
 
-        print("\nProduct by name and price")
-        val productsByNameAndPrice = productRepository.getProductsByNameAndPrice()
-        println(productsByNameAndPrice.joinToString(separator = "\n") { "Name: ${it.name}, Price: ${it.price}" })
+//        print("\nProduct by name and price")
+//        val productsByNameAndPrice = productRepository.getProductsByNameAndPriceUsingDtoBasedProjection()
+//        println(productsByNameAndPrice.joinToString(separator = "\n") { "Name: ${it.name}, Price: ${it.price}" })
+
+        println("\nProduct by name and price using interface-based projection:")
+        val productsByNameAndPrice = productRepository.getProductsByNameAndPriceUsingInterfaceBasedProjection()
+        println(
+            productsByNameAndPrice.joinToString(separator = "\n") {
+                "Name: ${it.name}, Price: ${it.price}"
+            }
+        )
     }
 }

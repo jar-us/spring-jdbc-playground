@@ -65,8 +65,18 @@ class ProductRepository(
         return jdbcTemplate.queryForList(sql, pageSize, offset)
     }
 
-    fun getProductsByNameAndPrice(): List<ProductNameAndPrice> {
+    fun getProductsByNameAndPriceUsingDtoBasedProjection(): List<ProductNameAndPrice> {
         return productSpringDataJdbcRepository.findNameAndPrice()
+    }
+
+    // Interface-based Projection; Spring will map the result dynamically
+    fun getProductsByNameAndPriceUsingInterfaceBasedProjection(): List<ProductProjection> {
+        return jdbcTemplate.query("SELECT name, price FROM product", RowMapper { rs, _ ->
+            ProductProjectionImpl(
+                name = rs.getString("name"),
+                price = rs.getDouble("price")
+            )
+        })
     }
 
 }

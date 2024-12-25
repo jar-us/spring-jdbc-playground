@@ -16,12 +16,24 @@ interface ProductSpringDataJdbcRepository : CrudRepository<Product, Long> {
     @Query("SELECT * FROM product")
     fun findAllAsStream(): Stream<ProductEntity>
 
+    // Define a query that maps to a DTO projection
     @Query("SELECT p.name, p.price FROM product p")
     fun findNameAndPrice(): List<ProductNameAndPrice>
+
 }
 
 
 data class ProductNameAndPrice(
     val name: String,
-    val price: Double
+    val price: Double,
 )
+
+interface ProductProjection {
+    val name: String
+    val price: Double
+}
+
+class ProductProjectionImpl(
+    override val name: String,
+    override val price: Double
+) : ProductProjection
